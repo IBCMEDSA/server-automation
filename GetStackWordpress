@@ -28,5 +28,5 @@ run() {
     fi
 }
 
-run sudo apt install apache2
+run apt install apache2
 which apache
