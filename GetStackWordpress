@@ -7,3 +7,20 @@ else
     echo "[ERRO] Distribuição ou sistema incompatível com o script. Certifique-se que o sistema é Linux e Debian."
     exit 1
 fi
+
+# Função handler de erro
+run() {
+    # Executar comando e capturar saída
+    erro=$("$@" 2>&1)
+    status=$?
+
+    # Verificar se o comando falhou
+    if [ $status -ne 0 ]; then
+        echo "Erro ao executar o comando: $1"
+        echo "Mensagem de Erro: $erro"
+        exit $status
+    fi
+}
+
+run sudo apt install apache2
+which apache
