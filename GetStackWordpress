@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Verificação sudo
+if [ "$(id -u)" -ne 0 ]; then
+    echo "[ERRO] É necessário privilégios administrativos."
+    exit 1
+fi
+
 # Verificação do sistema
 if [ -f /etc/debian_version ]; then
     echo "Sistema Debian!"
